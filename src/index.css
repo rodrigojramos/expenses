@@ -4,8 +4,13 @@
     --exp-color-bg-primary: #FFF;
 
     --exp-color-font-primary: #FFF;
+    --exp-color-font-secondary: #339966;
 
-    --exp-color-border: #FFF;
+    --exp-color-border-primary: #FFF;
+    --exp-color-border-secondary: #339966;
+
+    --exp-color-bg-button: #339966;
+    --exp-color-font-button: #FFF;
 }
 
 * {

@@ -1,0 +1,13 @@
+.exp-home-container {
+    padding: 10px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exp-home-container h2 {
+    font-size: 50px;
+    color: var(--exp-color-font-secondary);
+}
