@@ -1,0 +1,11 @@
+.exp-btn-inverse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--exp-color-font-button);
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--exp-color-bg-button);
+}

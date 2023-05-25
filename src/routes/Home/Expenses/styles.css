@@ -1,0 +1,17 @@
+.exp-expenses-section {
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.exp-expenses-container {
+    padding: 10px 15px;
+    min-height: 500px;
+    border-radius: 30px;
+    border-left: 5px solid var(--exp-color-border-secondary);
+    border-right: 5px solid var(--exp-color-border-secondary);
+}
+
+.exp-expenses-container h2 {
+    color: var(--exp-color-font-secondary);
+    font-size: 16px;
+}

@@ -1,7 +1,7 @@
 .exp-header-container {
     padding: 10px;
     height: 200px;
-    background: linear-gradient(180deg, #339966 0%, #fcfcfc 100%);
+    background: linear-gradient(180deg, var(--exp-color-gradient-primary) 0%, var(--exp-color-gradient-secondary) 100%);
     display: flex;
     align-items: center;
 }
@@ -22,14 +22,14 @@
     font-size: 18px;
     padding-left: 8px;
     padding-bottom: 5px;
-    border-bottom: 3px solid var(--exp-color-border);
-    color: var(--exp-color-font-primary);
+    border-bottom: 3px solid var(--exp-color-font-secondary);
+    color: var(--exp-color-font-secondary);
 }
 
 .exp-header-title p {
     font-size: 12px;
     padding-top: 5px;
-    color: var(--exp-color-font-primary);
+    color: #000;
 }
 
 .exp-header-logo {

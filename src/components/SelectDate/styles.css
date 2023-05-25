@@ -1,0 +1,84 @@
+.exp-select-date-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.exp-select-date {
+    width: 150px;
+    height: 30px;
+    background-color: #c9c9c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.exp-month-year {
+    margin-top: 5px;
+}
+
+.exp-choose-month {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+}
+
+.exp-month {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.exp-choose-month p {
+    cursor: pointer;
+}
+
+.exp-choose-year {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+    width: 150px;
+}
+
+.exp-year {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.exp-choose-year p {
+    cursor: pointer;
+}
+
+.exp-btn-consult {
+    font-size: 12px;
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.exp-btn-back-month {
+    color: #339966;
+    font-weight: 700;
+}
+
+.exp-btn-next-month {
+    color: #339966;
+    font-weight: 700;
+}
+
+.exp-btn-back-year {
+    color: #339966;
+    font-weight: 700;
+}
+
+.exp-btn-next-year {
+    color: #339966;
+    font-weight: 700;
+}

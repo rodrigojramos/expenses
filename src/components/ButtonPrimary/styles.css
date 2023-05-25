@@ -1,14 +1,10 @@
-.exp-btn-start {
+.exp-btn-primary {
     padding: 10px;
     border: 3px solid var(--exp-color-border-secondary);
     border-radius: 10px;
     color: var(--exp-color-bg-button);
     text-align: center;
-    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     background-color: var(--exp-color-font-button);
-    margin-top: 10px;
-    margin-bottom: 50px;
-    width: 200px;
 }

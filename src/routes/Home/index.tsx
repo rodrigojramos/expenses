@@ -1,15 +1,11 @@
-import ButtonStart from '../../components/ButtonStart';
-import './styles.css';
+import { Outlet } from "react-router-dom";
+import Header from "../../components/Header";
 
 export default function Home() {
     return(
-        <div className="exp-container">
-            <div className="exp-home-container">
-                <h2>Bem-vindo!</h2>
-                <div className="exp-home-btn">
-                    <ButtonStart />
-                </div>
-            </div>
-        </div>
+        <>
+            <Header />
+            <Outlet />
+        </>
     )
 }
