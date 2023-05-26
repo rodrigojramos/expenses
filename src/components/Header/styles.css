@@ -29,7 +29,7 @@
 .exp-header-title p {
     font-size: 12px;
     padding-top: 5px;
-    color: #000;
+    color: var(--exp-color-font-secondary);
 }
 
 .exp-header-logo {
