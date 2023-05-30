@@ -9,7 +9,7 @@
 .exp-select-date {
     width: 150px;
     height: 30px;
-    background-color: #c9c9c9;
+    background-color: var(--exp-color-bg-tertiary);
     display: flex;
     justify-content: center;
     align-items: center;

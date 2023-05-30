@@ -3,9 +3,11 @@
 :root {
     --exp-color-bg-primary: #FFF;
     --exp-color-bg-secondary: #ecf9f2;
+    --exp-color-bg-tertiary: #c9c9c9;
 
     --exp-color-font-primary: #FFF;
     --exp-color-font-secondary: #000;
+    --exp-color-font-tertiary: #808080;
 
     --exp-color-border-primary: #FFF;
     --exp-color-border-secondary: #339966;

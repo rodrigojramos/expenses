@@ -60,3 +60,80 @@
 .exp-padding {
     padding: 0 5px;
 }
+
+.exp-msg-none-expenses {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--exp-color-font-tertiary);
+}
+
+.exp-btn-add-and-amount {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.exp-btn-add {
+    width: 200px;
+    margin-top: 20px;
+}
+
+.exp-amount {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exp-total {
+    width: 70px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #339966;
+    border-radius: 10px 0 0 10px;
+    font-size: 14px;
+    color: var(--exp-color-bg-primary);
+    font-weight: 700;
+}
+
+.exp-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 40px;
+    border: 3px solid #339966;
+    border-radius: 0 10px 10px 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@media (min-width: 576px) {
+    .exp-total {
+        font-size: 16px;
+    }
+
+    .exp-value {
+        font-size: 16px;
+        width: 150px;
+    }
+
+    .exp-btn-add {
+        margin-left: 80px;
+    }
+
+    .exp-amount {
+        margin-right: 80px;
+    }
+
+    .exp-btn-add-and-amount {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
