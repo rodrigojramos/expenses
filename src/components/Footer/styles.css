@@ -1,0 +1,31 @@
+.exp-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background: linear-gradient(360deg, var(--exp-color-gradient-primary) 0%, var(--exp-color-gradient-secondary) 100%);
+    font-size: 12px;
+}
+
+.exp-footer-content {
+    margin-top: 30px;
+}
+
+.exp-footer img {
+    width: 30px;
+    height: 30px;
+}
+
+.exp-footer-img {
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+@media (min-width: 576px) {
+    .exp-footer {
+        font-size: 14px;
+    }
+}

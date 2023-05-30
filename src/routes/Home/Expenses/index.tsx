@@ -9,11 +9,13 @@ import ButtonInverse from '../../../components/ButtonInverse';
 
 export default function Expenses() {
 
+    const today = new Date;
+
     const [expenses, setExpenses] = useState<ExpenseDTO[]>([]);
 
-    const [month, setMonth] = useState<number>(5);
+    const [month, setMonth] = useState<number>(today.getMonth());
 
-    const [year, setYear] = useState<number>(2023);
+    const [year, setYear] = useState<number>(today.getFullYear());
 
     const [noExpense, setNoExpense] = useState<boolean>(false);
 
