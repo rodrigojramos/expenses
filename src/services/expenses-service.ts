@@ -1,27 +1,16 @@
-import { ExpenseDTO } from "../models/expense";
+import axios, { AxiosRequestConfig } from "axios";
+import { BASE_URL } from "../utils/system";
 
-export function findAll() : ExpenseDTO[] {
-    return expenses;
-}
-
-
-const expenses : ExpenseDTO[] = [
-    {
-        "id": 1,
-        "description": "Cinema",
-        "amount": 90.0,
-        "date": "2023-02-10"
-    },
-    {
-        "id": 2,
-        "description": "Mercado",
-        "amount": 400.0,
-        "date": "2023-02-14"
-    },
-    {
-        "id": 3,
-        "description": "Lavanderia",
-        "amount": 100.0,
-        "date": "2023-02-16"
+export function findExpensesRequest(month: number, year: number, description: string, sort = "date") {
+    const config : AxiosRequestConfig = {
+        method: "GET",
+        baseURL: BASE_URL,
+        url: `/expenses/${month}/${year}`,
+        params: {
+            description,
+            sort
+        }
     }
-]
+
+    return axios(config);
+}

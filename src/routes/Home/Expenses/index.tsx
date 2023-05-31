@@ -4,14 +4,17 @@ import DeleteIcon from '../../../assets/delete.svg';
 import EditIcon from '../../../assets/edit.svg';
 import { ExpenseDTO } from '../../../models/expense';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import ButtonInverse from '../../../components/ButtonInverse';
+import SearchBar from '../../../components/SearchBar';
+import * as expenseService from '../../../services/expenses-service';
 
 export default function Expenses() {
 
     const today = new Date;
 
     const [expenses, setExpenses] = useState<ExpenseDTO[]>([]);
+
+    const [expenseDescription, setExpenseDescription] = useState("");
 
     const [month, setMonth] = useState<number>(today.getMonth());
 
@@ -20,16 +23,20 @@ export default function Expenses() {
     const [noExpense, setNoExpense] = useState<boolean>(false);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/expenses/${month}/${year}`)
+        expenseService.findExpensesRequest(month, year, expenseDescription)
         .then(response => {
             setExpenses(response.data.content);
             response.data.content.length == 0 ? setNoExpense(true) : setNoExpense(false);
         })
-    }, [month, year, noExpense]);
+    }, [month, year, noExpense, expenseDescription]);
 
     function handleNewDate(newMonth: number, newYear: number) {
         setMonth(newMonth +1);
         setYear(newYear);
+    }
+
+    function handleSearch(searchText: string) {
+        setExpenseDescription(searchText);
     }
 
     return(
@@ -40,6 +47,9 @@ export default function Expenses() {
                         <h2>Despesas</h2>
                         <div>
                             <SelectDate onNewDate={handleNewDate} />
+                        </div>
+                        <div>
+                            <SearchBar onSearch={handleSearch}/>
                         </div>
                         <div>
                             {
@@ -73,7 +83,7 @@ export default function Expenses() {
                             {
                                 noExpense &&
                                 <div className="exp-msg-none-expenses">
-                                    <p>Nenhuma despesa adicionada neste mês!</p>
+                                    <p>Nenhuma despesa encontrada neste mês!</p>
                                 </div>
                             }
                         </div>
