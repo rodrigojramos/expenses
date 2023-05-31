@@ -22,10 +22,25 @@ export default function Expenses() {
 
     const [noExpense, setNoExpense] = useState<boolean>(false);
 
+    const [total, setTotal] = useState<number>(0);
+
     useEffect(() => {
         expenseService.findExpensesRequest(month, year, expenseDescription)
         .then(response => {
             setExpenses(response.data.content);
+            console.log(response.data.content);
+
+            const obj = response.data.content;
+
+            let sum = 0;
+
+            // eslint-disable-next-line prefer-const
+            for (let value of obj) {
+                console.log(value.amount);
+                sum = sum + value.amount;
+                setTotal(sum);
+            }
+
             response.data.content.length == 0 ? setNoExpense(true) : setNoExpense(false);
         })
     }, [month, year, noExpense, expenseDescription]);
@@ -92,10 +107,14 @@ export default function Expenses() {
                         <div className="exp-btn-add">
                             <ButtonInverse text="Add +"/>
                         </div>
-                        <div className="exp-amount">
-                            <p className="exp-total">Total:</p>
-                            <p className="exp-value">R$ 5.000,00</p>
-                        </div>
+                        {
+                            !noExpense &&
+                            <div className="exp-amount">
+                                <p className="exp-total">Total:</p>
+                                <p className="exp-value">R$ {total.toFixed(2)}</p>
+                            </div>
+                        }
+                        
                     </div>
                 </div>
             </section>
