@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import ButtonInverse from '../../../components/ButtonInverse';
 import SearchBar from '../../../components/SearchBar';
 import * as expenseService from '../../../services/expenses-service';
+import DialogConfirmation from '../../../components/DialogConfirmation';
 
 export default function Expenses() {
 
@@ -16,7 +17,7 @@ export default function Expenses() {
 
     const [expenseDescription, setExpenseDescription] = useState("");
 
-    const [month, setMonth] = useState<number>(today.getMonth());
+    const [month, setMonth] = useState<number>(today.getMonth() + 1);
 
     const [year, setYear] = useState<number>(today.getFullYear());
 
@@ -24,16 +25,18 @@ export default function Expenses() {
 
     const [total, setTotal] = useState<number>(0);
 
+    const [dialogConfirmationData, setDialogConfirmationData] = useState({
+        visible: false,
+        message: "Tem certeza?"
+    });
+
     useEffect(() => {
         expenseService.findExpensesRequest(month, year, expenseDescription)
         .then(response => {
             setExpenses(response.data.content);
-            console.log(response.data.content);
-
+            
             const obj = response.data.content;
-
             let sum = 0;
-
             // eslint-disable-next-line prefer-const
             for (let value of obj) {
                 console.log(value.amount);
@@ -52,6 +55,15 @@ export default function Expenses() {
 
     function handleSearch(searchText: string) {
         setExpenseDescription(searchText);
+    }
+
+    function handleDeleteClick() {
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: true});
+    }
+
+    function handleDialogConfirmationAnswer(asnwer: boolean) {
+        console.log("resposta: ", asnwer);
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: false})
     }
 
     return(
@@ -87,7 +99,7 @@ export default function Expenses() {
                                                     <td className="exp-txt-left scg-padding">{expense.description}</td>
                                                     <td className="exp-padding">R$ {expense.amount.toFixed(2)}</td>
                                                     <td className="exp-padding"><img src={EditIcon} alt="Editar" /></td>
-                                                    <td><img src={DeleteIcon} alt="Deletar" /></td>
+                                                    <td><img onClick={handleDeleteClick} src={DeleteIcon} alt="Deletar" /></td>
                                                 </tr>
                                                 )
                                             )
@@ -114,8 +126,14 @@ export default function Expenses() {
                                 <p className="exp-value">R$ {total.toFixed(2)}</p>
                             </div>
                         }
-                        
                     </div>
+                    {
+                        dialogConfirmationData.visible &&
+                        <DialogConfirmation
+                            message={dialogConfirmationData.message}
+                            onDialogAnswer={handleDialogConfirmationAnswer}
+                        />
+                    }
                 </div>
             </section>
         </main>
