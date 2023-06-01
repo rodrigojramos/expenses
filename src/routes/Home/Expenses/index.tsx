@@ -27,14 +27,18 @@ export default function Expenses() {
 
     const [dialogConfirmationData, setDialogConfirmationData] = useState({
         visible: false,
-        message: "Tem certeza?"
+        id: 0,
+        message: "Tem certeza?",
     });
+
+    const [deletedExpense, setDeletedExpense ] = useState<boolean>(false);
 
     useEffect(() => {
         expenseService.findExpensesRequest(month, year, expenseDescription)
         .then(response => {
             setExpenses(response.data.content);
             
+            setDeletedExpense(false);
             const obj = response.data.content;
             let sum = 0;
             // eslint-disable-next-line prefer-const
@@ -46,7 +50,7 @@ export default function Expenses() {
 
             response.data.content.length == 0 ? setNoExpense(true) : setNoExpense(false);
         })
-    }, [month, year, noExpense, expenseDescription]);
+    }, [month, year, noExpense, expenseDescription, deletedExpense]);
 
     function handleNewDate(newMonth: number, newYear: number) {
         setMonth(newMonth +1);
@@ -57,12 +61,17 @@ export default function Expenses() {
         setExpenseDescription(searchText);
     }
 
-    function handleDeleteClick() {
-        setDialogConfirmationData({ ...dialogConfirmationData, visible: true});
+    function handleDeleteClick(expenseId: number) {
+        setDialogConfirmationData({ ...dialogConfirmationData, id: expenseId, visible: true});
     }
 
-    function handleDialogConfirmationAnswer(asnwer: boolean) {
-        console.log("resposta: ", asnwer);
+    function handleDialogConfirmationAnswer(asnwer: boolean, expenseId: number) {
+        if(asnwer) {
+            expenseService.deleteById(expenseId)
+            .then(() => {
+                setDeletedExpense(true);
+            })
+        }
         setDialogConfirmationData({ ...dialogConfirmationData, visible: false})
     }
 
@@ -99,7 +108,7 @@ export default function Expenses() {
                                                     <td className="exp-txt-left scg-padding">{expense.description}</td>
                                                     <td className="exp-padding">R$ {expense.amount.toFixed(2)}</td>
                                                     <td className="exp-padding"><img src={EditIcon} alt="Editar" /></td>
-                                                    <td><img onClick={handleDeleteClick} src={DeleteIcon} alt="Deletar" /></td>
+                                                    <td><img onClick={() => handleDeleteClick(expense.id)} src={DeleteIcon} alt="Deletar" /></td>
                                                 </tr>
                                                 )
                                             )
@@ -131,6 +140,7 @@ export default function Expenses() {
                         dialogConfirmationData.visible &&
                         <DialogConfirmation
                             message={dialogConfirmationData.message}
+                            id={dialogConfirmationData.id}
                             onDialogAnswer={handleDialogConfirmationAnswer}
                         />
                     }

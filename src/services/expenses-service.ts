@@ -14,3 +14,13 @@ export function findExpensesRequest(month: number, year: number, description: st
 
     return axios(config);
 }
+
+export function deleteById(id: number) {
+    const config : AxiosRequestConfig = {
+        method: "DELETE",
+        baseURL: BASE_URL,
+        url: `/expenses/${id}`,
+    }
+
+    return axios(config);
+}
