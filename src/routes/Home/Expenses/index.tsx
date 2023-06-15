@@ -8,8 +8,11 @@ import ButtonInverse from '../../../components/ButtonInverse';
 import SearchBar from '../../../components/SearchBar';
 import * as expenseService from '../../../services/expenses-service';
 import DialogConfirmation from '../../../components/DialogConfirmation';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Expenses() {
+
+    const navigate = useNavigate();
 
     const today = new Date;
 
@@ -65,6 +68,10 @@ export default function Expenses() {
         setDialogConfirmationData({ ...dialogConfirmationData, id: expenseId, visible: true});
     }
 
+    function handleUpdateClick(expenseId: number) {
+        navigate(`/expenses/${expenseId}`);
+    }
+
     function handleDialogConfirmationAnswer(asnwer: boolean, expenseId: number) {
         if(asnwer) {
             expenseService.deleteById(expenseId)
@@ -107,7 +114,7 @@ export default function Expenses() {
                                                     <td className="exp-padding">{expense.date.slice(8)}</td>
                                                     <td className="exp-txt-left scg-padding">{expense.description}</td>
                                                     <td className="exp-padding">R$ {expense.amount.toFixed(2)}</td>
-                                                    <td className="exp-padding"><img src={EditIcon} alt="Editar" /></td>
+                                                    <td className="exp-padding"><img onClick={() => handleUpdateClick(expense.id)} src={EditIcon} alt="Editar" /></td>
                                                     <td><img onClick={() => handleDeleteClick(expense.id)} src={DeleteIcon} alt="Deletar" /></td>
                                                 </tr>
                                                 )
@@ -126,7 +133,9 @@ export default function Expenses() {
                     </div>
                     <div className="exp-btn-add-and-amount">
                         <div className="exp-btn-add">
-                            <ButtonInverse text="Add +"/>
+                            <Link to="/expenses/add">
+                                <ButtonInverse text="Add +"/>
+                            </Link>
                         </div>
                         {
                             !noExpense &&

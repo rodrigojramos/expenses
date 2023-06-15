@@ -12,12 +12,16 @@
 
     --exp-color-border-primary: #FFF;
     --exp-color-border-secondary: #339966;
+    --exp-color-border-tertiary: #d9d9d9;
 
     --exp-color-bg-button: #339966;
     --exp-color-font-button: #FFF;
 
     --exp-color-gradient-primary: #339966;
     --exp-color-gradient-secondary: #FCFCFC;
+
+    --exp-color-placeholder: #d9d9d9;
+    --exp-color-error: #f33f33;
 }
 
 * {

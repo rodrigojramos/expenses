@@ -13,11 +13,13 @@
     "@types/react-router-dom": "5.3.3",
     "axios": "0.27.2",
     "react": "^18.2.0",
+    "react-datepicker": "^4.13.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@types/react-datepicker": "^4.11.2",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",

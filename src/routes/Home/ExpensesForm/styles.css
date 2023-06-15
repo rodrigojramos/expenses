@@ -1,0 +1,96 @@
+.exp-form {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.exp-form-container {
+    width: 100%;
+    min-height: 250px;
+    max-width: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--exp-color-border-secondary);
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+
+.exp-form-container h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.exp-form-inputs {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.exp-form-inputs input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 250px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid var(--exp-color-border-tertiary);
+    border-radius: 4px;
+}
+
+.exp-form-inputs input:focus {
+    outline: none;
+}
+
+.exp-form-inputs input::placeholder {
+    color: var(--exp-color-placeholder);
+}
+
+.exp-form-inputs input[data-invalid="true"][data-dirty="true"] {
+    border: 1px solid var(--exp-color-error);
+}
+
+.exp-form-inputs input[data-invalid="true"][data-dirty="true"] ~ div {
+    display: unset;
+}
+
+.exp-form-error {
+    color: var(--exp-color-error);
+    font-size: 12px;
+    padding-left: 4px;
+    display: none;
+}
+
+.exp-form-buttons {
+    display: flex;
+    margin-top: 20px;
+}
+
+.exp-form-buttons button {
+    width: 100px;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--exp-color-font-primary);
+    background-color: var(--exp-color-bg-quartiary);
+    cursor: pointer;
+}
+
+.exp-form-btn-cancel {
+    margin-right: 10px;
+}
+
+.exp-form-btn-save {
+    margin-left: 10px;
+}
+
+@media (min-width: 576px) {
+    .exp-form-inputs input {
+        width: 300px;
+        height: 30px;
+    }
+}
